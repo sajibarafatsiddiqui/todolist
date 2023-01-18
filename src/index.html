@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
-   <h1>Today's To Do</h1> 
-   <div>
+   
+   <div class="selected-list">
+    <div class="stats">
+        <h1>Today's To Do</h1> 
+        <p><i class="fa-solid fa-arrows-rotate" ></i></p>
+
+
+    </div>
+    <div id="list">
+    <ul id="add-item" class = "items">
+        <li>
+            <form>
+                <input id="new-item" placeholder="Add to your list..." type="text">
+              </form>
+        </li>
+    </ul>
     <ul class="todolist">
      
     </ul>
+</div>
+<button type="button" class="link-button clear-completed js-clear-completed">Clear all completed</button>
    </div>
    <script src="index.js"></script>
 </body>
