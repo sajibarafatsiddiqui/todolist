@@ -51,6 +51,7 @@ ol {
   padding: 0;
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display:flex;
 }
 
 #add-item {
