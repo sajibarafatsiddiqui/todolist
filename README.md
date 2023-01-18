@@ -43,6 +43,7 @@
 - **[key_feature_1]** Used linters.yml to prevent linters to break the project
 - **[key_feature_2]** you can add your tasks
 - **[key_feature_3]** you can remove your tasks
+- **[key_feature_3]** webpack has been used to bundle js html and css.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -65,9 +66,9 @@ vs code or other editor
 
 Clone this repository to your desired folder:
 
-```sh
+```sh 
   cd my-folder
-  git clone https://github.com/sajibarafatsiddiqui/technothirst.git
+  git clone https://github.com/sajibarafatsiddiqui/todolist.git
 ```
 --->
 
@@ -94,7 +95,7 @@ Install this project with:
 
 > Describe 1 - 3 features you will add to the project.
 
-- [ ] **[new_feature_1]** WIll make the booklist persist using database in future
+- [ ] **[new_feature_1]** WIll make the todoList persist using database in future
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -113,7 +114,7 @@ Thanks to my coding partner Sajib for collaboration.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](https://github.com/sajibarafatsiddiqui/todolist/blob/todolistbr1/LICENSE.MD) licensed.
 
 _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
