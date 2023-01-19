@@ -65,7 +65,7 @@ const removeTask = (e) => {
   const index = e.target.parentNode.parentNode.id;
   latestTodoList.removeTask(index);
   localStorage.setItem('todolist', JSON.stringify(latestTodoList));
-  window.location.reload()
+  window.location.reload();
 };
 
 removeButton.forEach((element) => element.addEventListener('click', removeTask));
