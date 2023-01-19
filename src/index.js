@@ -62,10 +62,9 @@ editButton.forEach((elm) => {
 const removeButton = document.querySelectorAll('.remove-button');
 
 const removeTask = (e) => {
-  const index = Number(e.target.parentNode.id);
+  const index = e.target.parentNode.parentNode.id;
   latestTodoList.removeTask(index);
   localStorage.setItem('todolist', JSON.stringify(latestTodoList));
-  window.location.reload()
 };
 
 removeButton.forEach((element) => element.addEventListener('click', removeTask));

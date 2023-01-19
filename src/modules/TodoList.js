@@ -1,4 +1,3 @@
-import { eq } from 'lodash';
 import Todo from './Todo.js';
 
 export default class TodoList {
@@ -12,10 +11,10 @@ export default class TodoList {
   }
 
   removeTask(index) {
-    this.todolist.splice((index-1), 1);
+    this.todolist.splice((index - 1), 1);
     const updatedTodoList = this.todolist.map((object) => {
       if (object.index > index) {
-        const ind = object.index - 1
+        const ind = object.index - 1;
         return { ...object, index: ind };
       }
       return object;
@@ -25,7 +24,7 @@ export default class TodoList {
 
   editTask(description, index) {
     const updatedTodoList = this.todolist.map((object) => {
-      if (parseInt(object.index) === parseInt(index)) {
+      if (parseInt(object.index, 10) === parseInt(index, 10)) {
         return { ...object, description };
       }
       return object;
