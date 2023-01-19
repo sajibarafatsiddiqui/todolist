@@ -6,7 +6,6 @@ if (JSON.parse(localStorage.getItem('todolist'))) {
   todolist = JSON.parse(localStorage.getItem('todolist')).todolist;
 }
 const latestTodoList = new TodoList(todolist);
-
 const todos = document.getElementsByClassName('todolist')[0];
 
 const sortedTodoList = todolist.sort((a, b) => a.index - b.index);
@@ -15,7 +14,7 @@ sortedTodoList.forEach((todo) => {
   const task = document.createElement('li');
   task.classList.add('task');
   task.id = todo.index;
-  task.innerHTML = `<input type="checkbox" name="${todo.index}"><label id = "${todo.index}" for="${todo.index}">${todo.description}</label><div class="remove-button"><i class='fa fa-trash'></i><div>`;
+  task.innerHTML = `<input type="checkbox" name="${todo.index}"><label class = "${todo.index}" for="${todo.index}">${todo.description}</label><div class="remove-button"><i class='fa fa-trash'></i><div>`;
   todos.appendChild(task);
 });
 
@@ -46,14 +45,14 @@ editButton.forEach((elm) => {
 
   element.addEventListener('focusout', () => {
     if (element.innerHTML) {
-      latestTodoList.editTask(element.innerHTML, element.id);
+      latestTodoList.editTask(element.innerHTML, element.className);
       localStorage.setItem('todolist', JSON.stringify(latestTodoList));
       element.contentEditable = false;
     }
   });
   element.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && element.innerHTML) {
-      latestTodoList.editTask(element.innerHTML, element.id);
+      latestTodoList.editTask(element.innerHTML, element.className);
       localStorage.setItem('todolist', JSON.stringify(latestTodoList));
       element.contentEditable = false;
     }
@@ -63,10 +62,10 @@ editButton.forEach((elm) => {
 const removeButton = document.querySelectorAll('.remove-button');
 
 const removeTask = (e) => {
-  const index = e.target.parentNode.id;
+  const index = Number(e.target.parentNode.id);
   latestTodoList.removeTask(index);
   localStorage.setItem('todolist', JSON.stringify(latestTodoList));
-  window.location.reload();
+  window.location.reload()
 };
 
 removeButton.forEach((element) => element.addEventListener('click', removeTask));

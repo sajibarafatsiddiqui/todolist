@@ -12,10 +12,11 @@ export default class TodoList {
   }
 
   removeTask(index) {
-    this.todolist.splice(index, 1);
+    this.todolist.splice((index-1), 1);
     const updatedTodoList = this.todolist.map((object) => {
       if (object.index > index) {
-        return { ...object, index: object.index - 1 };
+        const ind = object.index - 1
+        return { ...object, index: ind };
       }
       return object;
     });
