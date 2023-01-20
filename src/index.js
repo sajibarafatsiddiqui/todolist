@@ -1,5 +1,6 @@
 import './style.css';
 import TodoList from './modules/TodoList.js';
+import {toggleStatus} from './modules/TaskStatus.js'
 
 let todolist = [];
 if (JSON.parse(localStorage.getItem('todolist'))) {
@@ -19,6 +20,7 @@ sortedTodoList.forEach((todo) => {
 });
 
 const enterButton = document.getElementById('submit-new-item');
+
 
 const addTask = (e) => {
   e.preventDefault();
@@ -69,3 +71,19 @@ const removeTask = (e) => {
 };
 
 removeButton.forEach((element) => element.addEventListener('click', removeTask));
+
+const checkBox = (e) => { let ind =e.target.name; 
+console.log(ind)
+  const task = latestTodoList.getTaskByIndex(ind)
+  console.log(task)
+toggleStatus(task)
+}
+
+const tasks = document.querySelectorAll('.task')
+tasks.forEach((elm)=>{
+  const inputCheck= elm.childNodes[0]
+
+  inputCheck.addEventListener('change',checkBox)
+}
+)
+

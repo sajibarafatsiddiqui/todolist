@@ -1,0 +1,1 @@
+export const toggleStatus = (task)=>  { return !(task.completed) }
