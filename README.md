@@ -84,7 +84,9 @@ Install this project with:
 
 <!-- AUTHORS -->
 ## Deployment
- -Live Demo(https://sajibarafatsiddiqui.github.io/todolist/dist/)
+ 
+ >[Live Demo](https://sajibarafatsiddiqui.github.io/todolist/dist/)
+ 
 ## 👥 Authors <a name="authors"></a>
 
 
