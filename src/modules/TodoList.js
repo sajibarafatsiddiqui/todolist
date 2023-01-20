@@ -36,3 +36,5 @@ export default class TodoList {
     return this.todolist.filter(obj => parseInt(obj.index,10) === parseInt(index,10))[0]
       }
 }
+
+  

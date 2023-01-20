@@ -9,13 +9,13 @@ if (JSON.parse(localStorage.getItem('todolist'))) {
 const latestTodoList = new TodoList(todolist);
 const todos = document.getElementsByClassName('todolist')[0];
 
-const sortedTodoList = todolist.sort((a, b) => a.index - b.index);
+const sortedTodoList = todolist.length > 0 ? todolist.sort((a, b) => a.index - b.index) : [];
 
-sortedTodoList.forEach((todo) => {
+sortedTodoList.forEach((todo,ind) => {
   const task = document.createElement('li');
   task.classList.add('task');
   task.id = todo.index;
-  task.innerHTML = `<input type="checkbox" name="${todo.index}"><label class = "${todo.index}" for="${todo.index}">${todo.description}</label><div class="remove-button"><i class='fa fa-trash'></i><div>`;
+  task.innerHTML = `<input type="checkbox" ${todo.completed ? 'checked' : ''} name="${todo.index}"><label class = "${todo.index}" for="${todo.index}">${todo.description}</label><div class="remove-button"><i class='fa fa-trash'></i><div>`;
   todos.appendChild(task);
 });
 
@@ -73,17 +73,32 @@ const removeTask = (e) => {
 removeButton.forEach((element) => element.addEventListener('click', removeTask));
 
 const checkBox = (e) => { let ind =e.target.name; 
-console.log(ind)
   const task = latestTodoList.getTaskByIndex(ind)
+  toggleStatus(task)
   console.log(task)
-toggleStatus(task)
+  latestTodoList.todolist[ind-1]=task;
+  localStorage.setItem('todolist', JSON.stringify(latestTodoList));
 }
 
 const tasks = document.querySelectorAll('.task')
 tasks.forEach((elm)=>{
   const inputCheck= elm.childNodes[0]
-
   inputCheck.addEventListener('change',checkBox)
 }
+
 )
 
+const clearButton = document.getElementsByClassName('link-button')[0]
+
+const clearCompleted =()=>{
+const filteredList = latestTodoList.todolist.filter((elm,ind)=> elm.completed === false);
+const sortList = filteredList.map((object,ind) => {
+    const index = ind+1;
+    return { ...object, index };
+  })
+latestTodoList.todolist = sortList
+localStorage.setItem('todolist',JSON.stringify(latestTodoList))
+window.location.reload();
+}
+
+clearButton.addEventListener('click',clearCompleted)
