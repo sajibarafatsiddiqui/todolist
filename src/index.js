@@ -1,6 +1,6 @@
 import './style.css';
 import TodoList from './modules/TodoList.js';
-import {toggleStatus} from './modules/TaskStatus.js'
+import toggleStatus from './modules/TaskStatus.js';
 
 let todolist = [];
 if (JSON.parse(localStorage.getItem('todolist'))) {
@@ -11,7 +11,7 @@ const todos = document.getElementsByClassName('todolist')[0];
 
 const sortedTodoList = todolist.length > 0 ? todolist.sort((a, b) => a.index - b.index) : [];
 
-sortedTodoList.forEach((todo,ind) => {
+sortedTodoList.forEach((todo) => {
   const task = document.createElement('li');
   task.classList.add('task');
   task.id = todo.index;
@@ -20,7 +20,6 @@ sortedTodoList.forEach((todo,ind) => {
 });
 
 const enterButton = document.getElementById('submit-new-item');
-
 
 const addTask = (e) => {
   e.preventDefault();
@@ -72,33 +71,31 @@ const removeTask = (e) => {
 
 removeButton.forEach((element) => element.addEventListener('click', removeTask));
 
-const checkBox = (e) => { let ind =e.target.name; 
-  const task = latestTodoList.getTaskByIndex(ind)
-  toggleStatus(task)
-  console.log(task)
-  latestTodoList.todolist[ind-1]=task;
+const checkBox = (e) => {
+  const ind = e.target.name;
+  const task = latestTodoList.getTaskByIndex(ind);
+  toggleStatus(task);
+  latestTodoList.todolist[ind - 1] = task;
   localStorage.setItem('todolist', JSON.stringify(latestTodoList));
-}
+};
 
-const tasks = document.querySelectorAll('.task')
-tasks.forEach((elm)=>{
-  const inputCheck= elm.childNodes[0]
-  inputCheck.addEventListener('change',checkBox)
-}
+const tasks = document.querySelectorAll('.task');
+tasks.forEach((elm) => {
+  const inputCheck = elm.childNodes[0];
+  inputCheck.addEventListener('change', checkBox);
+});
 
-)
+const clearButton = document.getElementsByClassName('link-button')[0];
 
-const clearButton = document.getElementsByClassName('link-button')[0]
-
-const clearCompleted =()=>{
-const filteredList = latestTodoList.todolist.filter((elm,ind)=> elm.completed === false);
-const sortList = filteredList.map((object,ind) => {
-    const index = ind+1;
+const clearCompleted = () => {
+  const filteredList = latestTodoList.todolist.filter((elm) => elm.completed === false);
+  const sortList = filteredList.map((object, ind) => {
+    const index = ind + 1;
     return { ...object, index };
-  })
-latestTodoList.todolist = sortList
-localStorage.setItem('todolist',JSON.stringify(latestTodoList))
-window.location.reload();
-}
+  });
+  latestTodoList.todolist = sortList;
+  localStorage.setItem('todolist', JSON.stringify(latestTodoList));
+  window.location.reload();
+};
 
-clearButton.addEventListener('click',clearCompleted)
+clearButton.addEventListener('click', clearCompleted);
