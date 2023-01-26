@@ -2,7 +2,8 @@ import Todo from './Todo.js';
 
 export default class TodoList {
   constructor(todolist) {
-    this.todolist = todolist;
+      this.todolist = todolist;
+      this.todolistArrayLength = JSON.parse(localStorage.getItem('todolist')) || [];
   }
 
   addTask(description, index) {
