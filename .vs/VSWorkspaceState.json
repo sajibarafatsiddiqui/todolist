@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\modules"
   ],
-  "SelectedNode": "\\C:\\Users\\Ing-Alex\\Desktop\\collaborateWithSajib",
+  "SelectedNode": "\\src\\index.test.js",
   "PreviewInSolutionExplorer": false
 }
