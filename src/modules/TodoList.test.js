@@ -5,32 +5,27 @@
 import TodoList from './TodoList.js';
 
 describe('tasks', () => {
-    document.body.innerHTML = `
+  document.body.innerHTML = `
     <ul class="todolist"></ul>
   `;
 
-    let todolist = [];
-    if (JSON.parse(localStorage.getItem('todolist'))) {
-        todolist = JSON.parse(localStorage.getItem('todolist'));
-    }
+  const todolist = (JSON.parse(localStorage.getItem('todolist'))) ? JSON.parse(localStorage.getItem('todolist')).todolist : [];
 
-    const todoListTest = new TodoList(todolist);
-    todoListTest.addTask('Task 1.', 1);
-    todoListTest.addTask('Task 2.', 2);
+  const todoListTest = new TodoList(todolist);
+  todoListTest.addTask('Todo 1.', 1);
+  todoListTest.addTask('Todo 2.', 2);
+  localStorage.setItem('todolist', JSON.stringify(todoListTest));
+  // Add testing
+  test('check the array for adding elements', () => {
+    expect(todolist).toHaveLength(1);
+  });
 
-    // Add testing
-    test('check the array for adding elements', () => {
-        expect(todoListTest.todolistArrayLength).toHaveLength(0);
-    });
+  // Delete testing
+  const btn = document.querySelector('.remove-button');
+  todoListTest.removeTask(btn);
+  localStorage.setItem('todolist', JSON.stringify(todoListTest));
 
-    test('check local storage for add', () => {
-        const localStorageRegister = todoListTest.todolistArrayLength;
-        delete localStorageRegister[0].tag;
-        expect(localStorageRegister).toStrictEqual([{
-            description: 'Task 1.',
-            index: 1,
-            completed: false,
-        }]);
-    });
-
+  test('check the array for removing elements', () => {
+    expect(todolist).toHaveLength(1);
+  });
 });

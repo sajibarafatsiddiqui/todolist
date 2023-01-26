@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">52.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/18</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>9/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">25% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>2/8</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.52% </span>
+                <span class="strong">50% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>4/8</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">56.25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/17</span>
+                <span class='fraction'>9/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,12 +101,10 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,15 +114,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,24 +144,23 @@
 export default class TodoList {
   constructor(todolist) {
       this.todolist = todolist;
-      this.todolistArrayLength = JSON.parse(localStorage.getItem('todolist')) || [];
-  }
+    }
 &nbsp;
   addTask(description, index) {
     const newTask = new Todo(description, index);
     this.todolist.push(newTask);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>moveTask(index) {
-<span class="cstat-no" title="statement not covered" >    this.todolist.splice((index - 1), 1);</span>
-    const updatedTodoList = <span class="cstat-no" title="statement not covered" >this.todolist.map(<span class="fstat-no" title="function not covered" >(o</span>bject) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (object.index &gt; index) {</span>
-        const ind = <span class="cstat-no" title="statement not covered" >object.index - 1;</span>
-<span class="cstat-no" title="statement not covered" >        return { ...object, index: ind };</span>
+  removeTask(index) {
+    this.todolist.splice((index - 1), 1);
+    const updatedTodoList = this.todolist.map((object) =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (object.index &gt; index) {
+        const ind = object.index - 1;
+        return { ...object, index: ind };
       }
 <span class="cstat-no" title="statement not covered" >      return object;</span>
     });
-<span class="cstat-no" title="statement not covered" >    this.todolist = updatedTodoList;</span>
+    this.todolist = updatedTodoList;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ed</span>itTask(description, index) {
@@ -187,7 +184,7 @@ export default class TodoList {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-26T03:08:05.218Z
+                at 2023-01-26T13:27:58.213Z
             </div>
         <script src="prettify.js"></script>
         <script>
