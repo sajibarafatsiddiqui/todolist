@@ -15,6 +15,7 @@ export default class TodoList {
   addTask(description, index) {
     const newTask = new Todo(description, index);
     this.todolist.push(newTask);
+    localStorage.setItem('todolist', JSON.stringify(this.todolist));
     this.addItem(newTask)
   }
 

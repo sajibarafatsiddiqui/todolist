@@ -3,23 +3,33 @@ import TodoList from './src/modules/TodoList.js';
 
 
  describe('Add one new item to the list', () => {
-    test('add li element test', () => {
-      document.body.innerHTML = `
-      <ul class="todolist">  
-      </ul>`;
+ 
+  document.body.innerHTML = `
+  <ul class="todolist">  
+  </ul>`;
 
-     let latestTodoList = new TodoList();
-    const {todos} = require('./src/modules/todoListContainer')
-     latestTodoList.addTask('sajib',1,todos)
-     // const enterButton = document.getElementById('submit-new-item');
-     // enterButton.click();
-     latestTodoList.removeItem(1)
-      const list = document.querySelector('.todolist li');
+ let latestTodoList = new TodoList();
+ 
+
+  let list = document.querySelectorAll('.todolist li');
+    test('add li element test', () => {
+    
+    latestTodoList.addTask('sajib',1)
+    let list = document.querySelectorAll('.todolist li');
+     expect(list).toHaveLength(1)
       
-     // expect(list).toHaveLength(1)
-      
-      expect(list).toHaveLength(0)
+     // expect(list).toHaveLength(0)
     });
+    test('add li element test', () => {
+      
+      latestTodoList.removeItem(1)
+      let list = document.querySelectorAll('.todolist li');
+       //const list = document.querySelector('.todolist li');
+       
+      // expect(list).toHaveLength(1)
+       
+      expect(list).toHaveLength(0)
+     });
   });
 
  

@@ -15,7 +15,6 @@ export const addTask = (e) => {
     const description = inputForm.value.trim();
     const index = latestTodoList.todolist.length + 1;
     latestTodoList.addTask(description, index);
-    localStorage.setItem('todolist', JSON.stringify(latestTodoList.todolist));
     inputForm.value = '';
   }
 };
